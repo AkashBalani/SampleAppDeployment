@@ -65,11 +65,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException { //Used by Spring framework
-		UserEntity userEntity = userRepository.findByEmail(email); //finds userEntity by email 
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException { // Used by Spring framework
+		UserEntity userEntity = userRepository.findByEmail(email); // finds userEntity by email
 
 		if (userEntity == null)
-			throw new UsernameNotFoundException(email); //seems logical, UsernameNotFound is a Spring Exception
+			throw new UsernameNotFoundException(email); // seems logical, UsernameNotFound is a Spring Exception
 		return new User(userEntity.getEmail(), userEntity.getEncryptedPassword(), new ArrayList<>());
 	}
 
